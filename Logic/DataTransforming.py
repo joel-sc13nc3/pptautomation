@@ -23,7 +23,6 @@ Benchmark_cols=['KPI ID', 'KPI','UoM', 'Count', 'Average', 'Worst Percentile', '
 
 df_without_0=df[cols_without_0]
 
-
 #Client Data
 df_client=df_without_0.drop(columns=Templatecolumns_df)
 df_client.dropna(subset = ['KPI ID'], inplace=True)
@@ -97,9 +96,10 @@ rename_cols_eur4_mapping = dict(zip(referenceset_eur4_cols, referenceset_eur1_co
 referenceset_eur4.rename(columns=rename_cols_eur4_mapping,inplace=True)
 
 #Splitting benchmark reference set in usd
-referenceset_usd1_cols=['KPI ID', 'KPI', 'Average.4', 'Worst Percentile.4', 'Bottom Quartile.4',
-                        'Median.4', 'Top Quartile.4', 'Best Percentile.4']
+referenceset_usd1_cols=['KPI ID', 'KPI', 'Average', 'Worst Percentile', 'Bottom Quartile',
+                        'Median', 'Top Quartile', 'Best Percentile']
 referenceset_usd1= df_benchmark[referenceset_usd1_cols]
+
 
 referenceset_usd2_cols=['KPI ID', 'KPI','Average.5','Worst Percentile.5', 'Bottom Quartile.5',
                         'Median.5', 'Top Quartile.5','Best Percentile.5']
@@ -119,3 +119,33 @@ referenceset_usd4_cols=['KPI ID', 'KPI','Average.7', 'Worst Percentile.7', 'Bott
 referenceset_usd4= df_benchmark[referenceset_usd4_cols]
 rename_cols_usd4_mapping = dict(zip(referenceset_usd4_cols, referenceset_usd1_cols))
 referenceset_usd4.rename(columns=rename_cols_usd4_mapping,inplace=True)
+
+
+def bar_chart_data_frame(kpi_id,company,bu,reference_set,all_metrics=False):
+    company=company[company["KPI ID"]==kpi_id]
+    company=company.iloc[:, [2]]
+    company["item"]="Company Total"
+    company.insert(0, 'item', company.pop("item"))
+
+    bu=bu[bu["KPI ID"]==kpi_id]
+    bu = bu.iloc[:,2:]
+    bu["item"] = "Business Unit"
+    bu.insert(0, 'item', bu.pop("item"))
+
+    reference_set=reference_set[reference_set["KPI ID"]==kpi_id]
+    if all_metrics ==False:
+        reference_set=reference_set[['Bottom Quartile','Median', 'Top Quartile']]
+    else: reference_set=reference_set[['Average', 'Worst Percentile', 'Bottom Quartile',
+       'Median', 'Top Quartile', 'Best Percentile']]
+
+    reference_set["item"] = "reference_set"
+    reference_set.insert(0, 'item', reference_set.pop("item"))
+    company_bu=company.append(bu)
+    company_bu_reference =company_bu.append(reference_set)
+    company_bu_reference=company_bu_reference.replace(np.nan,0)
+
+    return company_bu_reference
+
+
+
+
