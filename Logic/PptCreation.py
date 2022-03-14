@@ -4,9 +4,9 @@ from Logic import Analysis_Sheet
 
 analysis=Analysis_Sheet.analysis_sheet()
 
-company_name="Type the  comany name"
-bu_name="Type the busines unit name"
-reference_set_name="Type the reference set name"
+company_name="CES Total"
+bu_name= company_name+ " by " + "business unit "
+reference_set_name="B2B business services"
 
 
 company_usd=analysis.company_usd
@@ -29,12 +29,25 @@ KPI12= chart.bar_chart_data_frame("KPI12",company_usd,company_name,bu_usd,bu_nam
 KPI17= chart.bar_chart_data_frame("KPI17",company_usd,company_name,bu_usd,bu_name,reference_set_usd,reference_set_name)
 KPI18= chart.bar_chart_data_frame("KPI18",company_usd,company_name,bu_usd,bu_name,reference_set_usd,reference_set_name)
 KPI19= chart.bar_chart_data_frame("KPI19",company_usd,company_name,bu_usd,bu_name,reference_set_usd,reference_set_name)
+KPI25= chart.bar_chart_data_frame("KPI25",company_usd,company_name,bu_usd,bu_name,reference_set_usd,reference_set_name)
+KPI26= chart.bar_chart_data_frame("KPI26",company_usd,company_name,bu_usd,bu_name,reference_set_usd,reference_set_name)
+KPI32= chart.bar_chart_data_frame("KPI32",company_usd,company_name,bu_usd,bu_name,reference_set_usd,reference_set_name)
+
 KPI43= chart.bar_chart_data_frame("KPI43",company_usd,company_name,bu_usd,bu_name,reference_set_usd,reference_set_name)
 KPI45= chart.bar_chart_data_frame("KPI45",company_usd,company_name,bu_usd,bu_name,reference_set_usd,reference_set_name)
 KPI51= chart.bar_chart_data_frame("KPI51",company_usd,company_name,bu_usd,bu_name,reference_set_usd,reference_set_name)
 KPI57= chart.bar_chart_data_frame("KPI57",company_usd,company_name,bu_usd,bu_name,reference_set_usd,reference_set_name)
 
+#BM Page
 
+reference_rev=analysis.reference_rev_1
+reference_sales=analysis.reference_sales_1
+region=analysis.bm_region
+channel=analysis.bm_channels
+
+# Emp Share
+
+empshare=chart.bar_chart_emp_share(company_usd,bu_usd,["KPI25","KPI27","KPI28","KPI29","KPI30","KPI31","KPI32"])
 
 
 template_name = "032020 - Sales Navigator Report Template.pptx"
@@ -133,6 +146,18 @@ tc.add_chart_from_dataframe(
 
 tc.add_chart_from_dataframe(
     template_name=template_name,
+    chart_name="KPI25",
+    dataframe=KPI25,
+) # add your dataframe
+
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="KPI26",
+    dataframe=KPI26,
+) # add your dataframe
+
+tc.add_chart_from_dataframe(
+    template_name=template_name,
     chart_name="KPI43",
     dataframe=KPI43,
 ) # add your dataframe
@@ -153,6 +178,37 @@ tc.add_chart_from_dataframe(
     template_name=template_name,
     chart_name="KPI57",
     dataframe=KPI57,
+) # add your dataframe
+
+
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="BMREGION",
+    dataframe=region,
+) # add your dataframe
+
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="BMCHANNEL",
+    dataframe=channel,
+) # add your dataframe
+
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="BMREV",
+    dataframe=reference_rev,
+) # add your dataframe
+
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="BMSALES",
+    dataframe=reference_sales,
+) # add your dataframe
+
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="EMPSHARE",
+    dataframe=empshare,
 ) # add your dataframe
 
 

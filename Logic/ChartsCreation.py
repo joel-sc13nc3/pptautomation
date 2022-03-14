@@ -1,4 +1,6 @@
 import numpy as np
+import pandas as pd
+from sklearn import preprocessing
 
 
 
@@ -26,3 +28,46 @@ def bar_chart_data_frame(kpi_id, company_data, company_name, bu_data, bu_name, r
     company_bu_reference=company_bu_reference.replace(np.nan,"N/A")
 
     return company_bu_reference
+
+
+
+def referencetranformation(df,df1,rowname1,rowname2):
+    df=pd.DataFrame(df)
+    df=df.transpose()
+    columnslist=df.columns
+    newcols=["Bottom Quartile","Median","Top Quartile"]
+    colsdict=dict(zip(columnslist,newcols))
+    df=df.rename(columns=colsdict)
+    df=df.reset_index()
+    df = pd.concat([df1, df])
+    df=df.replace(np.nan,"N/A")
+    df=df.drop(columns="index")
+    df["item"]=[rowname1,rowname2]
+    df.insert(0, "item", df.pop("item"))
+    return df
+
+
+
+
+
+
+def bar_chart_emp_share(df,bu,kpi_id):
+    scaler = preprocessing.MinMaxScaler()
+
+    df=df[df["KPI ID"].isin(kpi_id)]
+    bu=bu[bu["KPI ID"].isin(kpi_id)]
+    data=pd.merge(df,bu,on="KPI")
+    data=data.drop(columns=["KPI ID_x","KPI ID_y"])
+    data=data.replace(np.nan,0)
+    datacols=np.array(data.columns[1:])
+    for x in datacols:
+        sum=data[x].sum()
+        data[x]=data[x]/sum
+        data[x] = data[x] *100
+    data['Categories'] =["Account Owner","Customer Facing","Customer Facing","Non Customer Facing","Non Customer Facing","Non Customer Facing","Sales Management"]
+    data.insert(0, "Categories", data.pop("Categories"))
+    data=data.groupby(by=["Categories"]).sum()
+    data["Top Performers"]=[0.57,0.20,0.09,0.14]
+
+
+    return data
