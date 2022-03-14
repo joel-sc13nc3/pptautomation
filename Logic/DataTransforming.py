@@ -1,14 +1,21 @@
+import os
+
 import pandas as pd
 import numpy as np
 import regex as re
 from Logic import ChartsCreation as chart
 
+analysisfilename= os.listdir("Input\\Analysis_Sheet")[0]
+
+dataloaderfilename= os.listdir("Input\\Data_Loader")[0]
+
+
 # Dataset load
-df_analysis_sales=pd.read_excel("C:\\Users\\Joel Ramirez\\PycharmProjects\\pptautomation\\Input\\Analysis_Sheet\\20220308_Covanta_SN_Analysis_v4.xlsm", sheet_name="Analysis - Sales", header=5)
+df_analysis_sales=pd.read_excel("Input\\Analysis_Sheet\\"+analysisfilename, sheet_name="Analysis - Sales", header=5)
 
-df_reference_set=pd.read_excel("C:\\Users\\Joel Ramirez\\PycharmProjects\\pptautomation\\Input\\Analysis_Sheet\\20220308_Covanta_SN_Analysis_v4.xlsm", sheet_name="Reference Set")
+df_reference_set=pd.read_excel("Input\\Analysis_Sheet\\"+analysisfilename, sheet_name="Reference Set")
 
-df_data_loader=pd.read_excel("C:\\Users\\Joel Ramirez\\PycharmProjects\\pptautomation\\Input\\Data_Loader\\2022_SN_DataLoader_Total&RecurringRevenue_v20220311.xlsm", sheet_name="DataLoader",header=34)
+df_data_loader=pd.read_excel("Input\\Data_Loader\\"+dataloaderfilename, sheet_name="DataLoader",header=34)
 
 #Data Loader
 
