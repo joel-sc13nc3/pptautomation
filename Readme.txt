@@ -11,12 +11,14 @@ Note: This needs to be done only the first time python is installed
 
 
 # Step by step to run the code
-
-1. Open the cmd
-2. Select the source of the boxapp folder
-    2.a Additional instructions to navigate to the source path
-        2.a.1 type cd "full_path" (example: cd "C:\Users\Joel Ramirez\Box Sync\M&S Suite Deployments Micro-boxes")
-        2.a.2 You need to find the main.py under the pptautomation folder
-3. run the following instruction python main.py
-4. Wait until following message appears "The ppttc file has been succesfully created"
-5. The ppttc will be located in the output of the pptautomation folder
+1. Add the analysis sheet (latest version) to the "Input/Analysis_Sheet"
+2. Add the dataloader (latest version) to the "Input/Data_Loader"
+3. Fill the Selections template located in the "Input/Naming"
+4. Open the cmd
+5. Select the source of the boxapp folder
+    5.a Additional instructions to navigate to the source path
+        5.a.1 type cd "full_path" (example: cd "C:\Users\Joel Ramirez\Box Sync\M&S Suite Deployments Micro-boxes")
+        5.a.2 You need to find the main.py under the pptautomation folder
+6. run the following instruction python main.py
+7. Wait until following message appears "The ppttc file has been succesfully created"
+8. The ppttc will be located in the output of the pptautomation folder
