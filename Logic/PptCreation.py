@@ -4,9 +4,9 @@ from Logic import Analysis_Sheet
 
 analysis=Analysis_Sheet.analysis_sheet()
 
-company_name="CES Total"
-bu_name= company_name+ " by " + "business unit "
-reference_set_name="B2B business services"
+company_name=analysis.company_name
+bu_name= company_name+ " by " + analysis.bu_naming
+reference_set_name=analysis.reference_set_naming
 
 
 company_usd=analysis.company_usd

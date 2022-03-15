@@ -5,9 +5,14 @@ import numpy as np
 import regex as re
 from Logic import ChartsCreation as chart
 
+#Files name
 analysisfilename= os.listdir("Input\\Analysis_Sheet")[0]
-
 dataloaderfilename= os.listdir("Input\\Data_Loader")[0]
+namingfilename= os.listdir("Input\\Naming")[0]
+print(namingfilename)
+
+
+
 
 
 # Dataset load
@@ -16,6 +21,17 @@ df_analysis_sales=pd.read_excel("Input\\Analysis_Sheet\\"+analysisfilename, shee
 df_reference_set=pd.read_excel("Input\\Analysis_Sheet\\"+analysisfilename, sheet_name="Reference Set")
 
 df_data_loader=pd.read_excel("Input\\Data_Loader\\"+dataloaderfilename, sheet_name="DataLoader",header=34)
+
+naming=pd.read_excel("Input\\Naming\\"+namingfilename)
+
+
+#Naming data
+company_naming=naming.iloc[0,1]
+
+bu_naming=naming.iloc[1,1]
+
+reference_set_naming=naming.iloc[2,1]
+
 
 #Data Loader
 

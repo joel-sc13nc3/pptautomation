@@ -23,6 +23,40 @@ class analysis_sheet:
         self.__reference_sales_1=data.df_reference_set_sales1
         self.__bm_region=data.df_reference_set_region1
         self.__bm_channels=data.df_reference_set_channel1
+        self.__company_name=data.company_naming
+        self.__bu_naming=data.bu_naming
+        self.__reference_set_naming=data.reference_set_naming
+
+    @property
+    def company_name(self):
+        return self.__company_name
+
+    # a setter function
+    @company_name.setter
+    def company_name(self, new_val):
+        self.__company_name = new_val
+
+
+
+
+    @property
+    def bu_naming(self):
+        return self.__bu_naming
+
+    # a setter function
+    @bu_naming.setter
+    def bu_naming(self, new_val):
+        self.__bu_naming = new_val
+
+
+    @property
+    def reference_set_naming(self):
+        return self.__reference_set_naming
+
+    # a setter function
+    @reference_set_naming.setter
+    def reference_set_naming(self, new_val):
+        self.__reference_set_naming = new_val
 
 
     @property
