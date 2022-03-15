@@ -7,36 +7,8 @@ analysis=Analysis_Sheet.analysis_sheet()
 company_name=analysis.company_name
 bu_name= company_name+ " by " + analysis.bu_naming
 reference_set_name=analysis.reference_set_naming
+currency=analysis.currency
 
-
-company_usd=analysis.company_usd
-bu_usd=analysis.bu_usd
-reference_set_usd=analysis.reference_set_usd1
-
-#KPI sBar Charts Creation
-
-KPI1= chart.bar_chart_data_frame("KPI1",company_usd,company_name,bu_usd,bu_name,reference_set_usd,reference_set_name)
-KPI2= chart.bar_chart_data_frame("KPI2",company_usd,company_name,bu_usd,bu_name,reference_set_usd,reference_set_name)
-KPI3= chart.bar_chart_data_frame("KPI3",company_usd,company_name,bu_usd,bu_name,reference_set_usd,reference_set_name)
-KPI4= chart.bar_chart_data_frame("KPI4",company_usd,company_name,bu_usd,bu_name,reference_set_usd,reference_set_name)
-KPI5= chart.bar_chart_data_frame("KPI5",company_usd,company_name,bu_usd,bu_name,reference_set_usd,reference_set_name)
-KPI6= chart.bar_chart_data_frame("KPI6",company_usd,company_name,bu_usd,bu_name,reference_set_usd,reference_set_name)
-KPI7= chart.bar_chart_data_frame("KPI7",company_usd,company_name,bu_usd,bu_name,reference_set_usd,reference_set_name)
-KPI9= chart.bar_chart_data_frame("KPI9",company_usd,company_name,bu_usd,bu_name,reference_set_usd,reference_set_name)
-KPI10= chart.bar_chart_data_frame("KPI10",company_usd,company_name,bu_usd,bu_name,reference_set_usd,reference_set_name)
-KPI11= chart.bar_chart_data_frame("KPI11",company_usd,company_name,bu_usd,bu_name,reference_set_usd,reference_set_name)
-KPI12= chart.bar_chart_data_frame("KPI12",company_usd,company_name,bu_usd,bu_name,reference_set_usd,reference_set_name)
-KPI17= chart.bar_chart_data_frame("KPI17",company_usd,company_name,bu_usd,bu_name,reference_set_usd,reference_set_name)
-KPI18= chart.bar_chart_data_frame("KPI18",company_usd,company_name,bu_usd,bu_name,reference_set_usd,reference_set_name)
-KPI19= chart.bar_chart_data_frame("KPI19",company_usd,company_name,bu_usd,bu_name,reference_set_usd,reference_set_name)
-KPI25= chart.bar_chart_data_frame("KPI25",company_usd,company_name,bu_usd,bu_name,reference_set_usd,reference_set_name)
-KPI26= chart.bar_chart_data_frame("KPI26",company_usd,company_name,bu_usd,bu_name,reference_set_usd,reference_set_name)
-KPI32= chart.bar_chart_data_frame("KPI32",company_usd,company_name,bu_usd,bu_name,reference_set_usd,reference_set_name)
-
-KPI43= chart.bar_chart_data_frame("KPI43",company_usd,company_name,bu_usd,bu_name,reference_set_usd,reference_set_name)
-KPI45= chart.bar_chart_data_frame("KPI45",company_usd,company_name,bu_usd,bu_name,reference_set_usd,reference_set_name)
-KPI51= chart.bar_chart_data_frame("KPI51",company_usd,company_name,bu_usd,bu_name,reference_set_usd,reference_set_name)
-KPI57= chart.bar_chart_data_frame("KPI57",company_usd,company_name,bu_usd,bu_name,reference_set_usd,reference_set_name)
 
 #BM Page
 
@@ -45,9 +17,48 @@ reference_sales=analysis.reference_sales_1
 region=analysis.bm_region
 channel=analysis.bm_channels
 
+
+if currency == "$":
+    company_data=analysis.company_usd
+    bu_data=analysis.bu_usd
+    reference_set_data=analysis.reference_set_usd1
+elif currency == "€" :
+    company_data = analysis.company_eur
+    bu_data = analysis.bu_eur
+    reference_set_data = analysis.reference_set_eur1
+else:
+    print("Please select a valid option in the Selection excel file")
+
+
+#KPI sBar Charts Creation
+
+KPI1= chart.bar_chart_data_frame("KPI1", company_data, company_name, bu_data, bu_name, reference_set_data, reference_set_name)
+KPI2= chart.bar_chart_data_frame("KPI2", company_data, company_name, bu_data, bu_name, reference_set_data, reference_set_name)
+KPI3= chart.bar_chart_data_frame("KPI3", company_data, company_name, bu_data, bu_name, reference_set_data, reference_set_name)
+KPI4= chart.bar_chart_data_frame("KPI4", company_data, company_name, bu_data, bu_name, reference_set_data, reference_set_name)
+KPI5= chart.bar_chart_data_frame("KPI5", company_data, company_name, bu_data, bu_name, reference_set_data, reference_set_name)
+KPI6= chart.bar_chart_data_frame("KPI6", company_data, company_name, bu_data, bu_name, reference_set_data, reference_set_name)
+KPI7= chart.bar_chart_data_frame("KPI7", company_data, company_name, bu_data, bu_name, reference_set_data, reference_set_name)
+KPI9= chart.bar_chart_data_frame("KPI9", company_data, company_name, bu_data, bu_name, reference_set_data, reference_set_name)
+KPI10= chart.bar_chart_data_frame("KPI10", company_data, company_name, bu_data, bu_name, reference_set_data, reference_set_name)
+KPI11= chart.bar_chart_data_frame("KPI11", company_data, company_name, bu_data, bu_name, reference_set_data, reference_set_name)
+KPI12= chart.bar_chart_data_frame("KPI12", company_data, company_name, bu_data, bu_name, reference_set_data, reference_set_name)
+KPI17= chart.bar_chart_data_frame("KPI17", company_data, company_name, bu_data, bu_name, reference_set_data, reference_set_name)
+KPI18= chart.bar_chart_data_frame("KPI18", company_data, company_name, bu_data, bu_name, reference_set_data, reference_set_name)
+KPI19= chart.bar_chart_data_frame("KPI19", company_data, company_name, bu_data, bu_name, reference_set_data, reference_set_name)
+KPI25= chart.bar_chart_data_frame("KPI25", company_data, company_name, bu_data, bu_name, reference_set_data, reference_set_name)
+KPI26= chart.bar_chart_data_frame("KPI26", company_data, company_name, bu_data, bu_name, reference_set_data, reference_set_name)
+KPI32= chart.bar_chart_data_frame("KPI32", company_data, company_name, bu_data, bu_name, reference_set_data, reference_set_name)
+
+KPI43= chart.bar_chart_data_frame("KPI43", company_data, company_name, bu_data, bu_name, reference_set_data, reference_set_name)
+KPI45= chart.bar_chart_data_frame("KPI45", company_data, company_name, bu_data, bu_name, reference_set_data, reference_set_name)
+KPI51= chart.bar_chart_data_frame("KPI51", company_data, company_name, bu_data, bu_name, reference_set_data, reference_set_name)
+KPI57= chart.bar_chart_data_frame("KPI57", company_data, company_name, bu_data, bu_name, reference_set_data, reference_set_name)
+
+
 # Emp Share
 
-empshare=chart.bar_chart_emp_share(company_usd,bu_usd,["KPI25","KPI27","KPI28","KPI29","KPI30","KPI31","KPI32"])
+empshare=chart.bar_chart_emp_share(company_data, bu_data, ["KPI25", "KPI27", "KPI28", "KPI29", "KPI30", "KPI31", "KPI32"])
 
 
 template_name = "032020 - Sales Navigator Report Template.pptx"
@@ -214,3 +225,6 @@ tc.add_chart_from_dataframe(
 
 
 tc.save_ppttc(filename=filename)
+
+print("The pptc file has been succesfully created")
+print("Please go the output folder and double click the pptc file")

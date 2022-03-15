@@ -1,8 +1,5 @@
 import numpy as np
 import pandas as pd
-from sklearn import preprocessing
-
-
 
 def bar_chart_data_frame(kpi_id, company_data, company_name, bu_data, bu_name, reference_set_data, reference_set_name, all_metrics=False):
     company_data=company_data[company_data["KPI ID"] == kpi_id]
@@ -52,7 +49,6 @@ def referencetranformation(df,df1,rowname1,rowname2):
 
 
 def bar_chart_emp_share(df,bu,kpi_id):
-    scaler = preprocessing.MinMaxScaler()
 
     df=df[df["KPI ID"].isin(kpi_id)]
     bu=bu[bu["KPI ID"].isin(kpi_id)]
@@ -68,6 +64,4 @@ def bar_chart_emp_share(df,bu,kpi_id):
     data.insert(0, "Categories", data.pop("Categories"))
     data=data.groupby(by=["Categories"]).sum()
     data["Top Performers"]=[0.57,0.20,0.09,0.14]
-
-
     return data

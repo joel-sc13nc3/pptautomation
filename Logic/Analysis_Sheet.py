@@ -1,6 +1,3 @@
-import pandas as pd
-import numpy as np
-import regex as re
 from Logic import DataTransforming
 
 data=DataTransforming
@@ -26,6 +23,16 @@ class analysis_sheet:
         self.__company_name=data.company_naming
         self.__bu_naming=data.bu_naming
         self.__reference_set_naming=data.reference_set_naming
+        self.__currency = data.currency
+
+    @property
+    def currency(self):
+        return self.__currency
+
+    # a setter function
+    @currency.setter
+    def currency(self, new_val):
+        self.__currency = new_val
 
     @property
     def company_name(self):
