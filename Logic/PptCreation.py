@@ -62,7 +62,7 @@ empshare=chart.bar_chart_emp_share(company_data, bu_data, ["KPI25", "KPI27", "KP
 
 
 template_name = "032020 - Sales Navigator Report Template.pptx"
-filename = "C:\\Users\\Joel Ramirez\\PycharmProjects\\pptautomation\\Output\\template.ppttc"
+filename = "Output\\template.ppttc"
 
 
 tc = Thinkcell() # create thinkcell object
