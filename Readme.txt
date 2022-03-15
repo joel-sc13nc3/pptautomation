@@ -5,7 +5,7 @@
     1.b check python was properly installed by opening the cmd and run  the command [ python --version ] (do not include brackets). The python version should appear here
 2. Install Libraries
     2.a Open CMD and install the libraries by typing [pip install name_of_variable] (do not include brackets).
-    This needs to be done for the following list of libraries: pandas, numpy, thinkcell,regex
+    This needs to be done for the following list of libraries: pandas, numpy, thinkcell,regex,openpyxl
 
 Note: This needs to be done only the first time python is installed
 
@@ -17,7 +17,7 @@ Note: This needs to be done only the first time python is installed
 4. Open the cmd
 5. Select the source of the boxapp folder
     5.a Additional instructions to navigate to the source path
-        5.a.1 type cd "full_path" (example: cd "C:\Users\Joel Ramirez\Box Sync\M&S Suite Deployments Micro-boxes")
+        5.a.1 type cd "full_path" (example: cd "C:\Users\Joel Ramirez\downloads\pptautomation")
         5.a.2 You need to find the main.py under the pptautomation folder
 6. run the following instruction python main.py
 7. Wait until following message appears "The ppttc file has been succesfully created"
