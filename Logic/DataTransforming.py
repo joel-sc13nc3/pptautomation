@@ -1,14 +1,15 @@
 import os
-
 import pandas as pd
-import numpy as np
 import regex as re
 from Logic import ChartsCreation as chart
+import warnings
+warnings.filterwarnings("ignore")
 
-#Files name
-analysisfilename= os.listdir("Input\\Analysis_Sheet")[0]
-dataloaderfilename= os.listdir("Input\\Data_Loader")[0]
-namingfilename= os.listdir("Input\\Naming")[0]
+# Files name
+
+analysisfilename = os.listdir("Input\\Analysis_Sheet")[0]
+dataloaderfilename = os.listdir("Input\\Data_Loader")[0]
+namingfilename = os.listdir("Input\\Naming")[0]
 
 
 # Dataset load
@@ -21,7 +22,7 @@ df_data_loader=pd.read_excel("Input\\Data_Loader\\"+dataloaderfilename, sheet_na
 naming=pd.read_excel("Input\\Naming\\"+namingfilename,sheet_name="Selections")
 
 
-#Naming data
+# Naming data
 company_naming=naming.iloc[0,1]
 
 bu_naming=naming.iloc[1,1]
@@ -29,10 +30,9 @@ bu_naming=naming.iloc[1,1]
 reference_set_naming=naming.iloc[2,1]
 
 currency=naming.iloc[3,1]
-print(currency)
 
 
-#Data Loader
+# Data Loader
 
 # Removing columns
 df_data_loader_columns=df_data_loader.columns
@@ -123,15 +123,12 @@ df_reference_set_industry3=reference_set_tranform(df_reference_set_industry3,col
 df_reference_set_industry4=df_reference_set.iloc[53:72,21:23]
 df_reference_set_industry4=reference_set_tranform(df_reference_set_industry4,colsname=["Industry","Value"])
 
-#Merging dataloader and reference set
+# Merging dataloader and reference set
 
 def df_merge(companydata,referencedata):
     data=[companydata,referencedata]
     df=pd.concat(data)
     return df
-
-
-
 
 # Obtaining columns from Dataset
 
@@ -159,7 +156,9 @@ df_client.dropna(subset = ['KPI ID'], inplace=True)
 
 endswith_1=".1"
 clientcols=df_client.columns
-#Cleaning Client Eur Data
+
+# Cleaning Client Eur Data
+
 clientcols_eur= list(filter(lambda x: not x.endswith(endswith_1), clientcols))
 df_client_eur=df_analysis_sales[clientcols_eur]
 

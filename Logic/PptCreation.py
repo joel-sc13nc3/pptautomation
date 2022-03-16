@@ -58,7 +58,8 @@ KPI57= chart.bar_chart_data_frame("KPI57", company_data, company_name, bu_data, 
 
 # Emp Share
 
-empshare=chart.bar_chart_emp_share(company_data, bu_data, ["KPI25", "KPI27", "KPI28", "KPI29", "KPI30", "KPI31", "KPI32"])
+empshare=chart.bar_chart_emp_share(company_data,bu_data,["KPI25", "KPI27", "KPI28", "KPI29", "KPI30", "KPI31", "KPI32"],reference_set_data)
+empshare2=chart.bar_chart_emp_share(company_data,bu_data,["KPI25", "KPI26", "KPI32"],reference_set_data)
 
 
 template_name = "032020 - Sales Navigator Report Template.pptx"
@@ -222,6 +223,11 @@ tc.add_chart_from_dataframe(
     dataframe=empshare,
 ) # add your dataframe
 
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="EMPSHARE2",
+    dataframe=empshare2,
+) # add your dataframe
 
 
 tc.save_ppttc(filename=filename)
