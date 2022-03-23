@@ -1,14 +1,16 @@
 from thinkcell import Thinkcell
 from Logic import ChartsCreation as chart
 from Logic import Analysis_Sheet
+import os
 
 analysis=Analysis_Sheet.analysis_sheet()
+
+pptfilename = os.listdir("Output")[0]
 
 company_name=analysis.company_name
 bu_name= company_name+ " by " + analysis.bu_naming
 reference_set_name=analysis.reference_set_naming
 currency=analysis.currency
-
 
 #BM Page
 
@@ -62,7 +64,8 @@ empshare=chart.bar_chart_emp_share(company_data,bu_data,["KPI25", "KPI27", "KPI2
 empshare2=chart.bar_chart_emp_share(company_data,bu_data,["KPI25", "KPI26", "KPI32"],reference_set_data)
 
 
-template_name = "032020 - Sales Navigator Report Template.pptx"
+
+template_name = pptfilename
 filename = "Output\\template.ppttc"
 
 
@@ -232,5 +235,6 @@ tc.add_chart_from_dataframe(
 
 tc.save_ppttc(filename=filename)
 
-print("The pptc file has been succesfully created")
+print("The ppttc file has been succesfully created")
 print("Please go the output folder and double click the pptc file")
+

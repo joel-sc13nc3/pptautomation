@@ -74,10 +74,9 @@ def bar_chart_emp_share(df,bu,kpi_id,reference_set):
         (data['KPI'] == "Sales management FTE/sales FTE")
     ]
 
-    values = ['Account Owner','Customer Facing','Sales enablement', 'Customer Facing', 'Non Customer Facing','Non Customer Facing','Non Customer Facing','Sales Management']
+    values = ['Account Owner','Customer Facing','Sales Enablement', 'Customer Facing', 'Non Customer Facing','Non Customer Facing','Non Customer Facing','Sales Management']
     data['Categories'] = np.select(conditions, values)
     data.insert(0, "Categories", data.pop("Categories"))
     data.drop(columns=["KPI"],inplace=True)
-    data=data.groupby(by=["Categories"],as_index=False).sum()
-
+    data=data.groupby(by=["Categories"],as_index=False,sort=False).sum()
     return data

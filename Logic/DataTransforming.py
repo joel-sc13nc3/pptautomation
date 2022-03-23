@@ -4,7 +4,6 @@ import regex as re
 from Logic import ChartsCreation as chart
 import warnings
 warnings.filterwarnings("ignore")
-
 # Files name
 
 analysisfilename = os.listdir("Input\\Analysis_Sheet")[0]
@@ -71,7 +70,7 @@ df_reference_set_4_Name= df_reference_set._get_value(1, 22, takeable = True)
 
 # Revenue
 df_reference_set_revenue1= df_reference_set.iloc[6,1:4]
-df_reference_set_revenue1=chart.referencetranformation(df_reference_set_revenue1,rev_df,"Company Total","Business Unit")
+df_reference_set_revenue1=chart.referencetranformation(df_reference_set_revenue1,rev_df,company_naming,bu_naming)
 
 df_reference_set_revenue2=df_reference_set.iloc[6,8:12]
 df_reference_set_revenue3=df_reference_set.iloc[6,15:19]
@@ -79,7 +78,7 @@ df_reference_set_revenue4=df_reference_set.iloc[6,19:22]
 
 # Sales
 df_reference_set_sales1=df_reference_set.iloc[7,1:4]
-df_reference_set_sales1=chart.referencetranformation(df_reference_set_sales1,sales_employee_df,"Company Total","Business Unit")
+df_reference_set_sales1=chart.referencetranformation(df_reference_set_sales1,sales_employee_df,company_naming,bu_naming)
 
 df_reference_set_sales2=df_reference_set.iloc[7,8:12]
 df_reference_set_sales3=df_reference_set.iloc[7,15:19]
